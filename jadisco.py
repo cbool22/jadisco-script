@@ -23,7 +23,7 @@ DEVELOPER_KEY = "API_KEY"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
-slapfile = "C:/Users/cbool/AppData/Roaming/HexChat/addons/slapobjects.txt"
+rngfile = "C:/Users/cbool/AppData/Roaming/HexChat/addons/rngobjects.txt"
 
 def info(word, word_eol, user_data):
     print("\002\00304Informacje skryptu Jadisco.")
@@ -47,14 +47,14 @@ def death_counter(word, word_eol, user_data):
 
 def rng(word, word_eol, user_data):
     if len(word_eol) < 2:
-        f = open(slapfile,'r')
+        f = open(rngfile,'r')
         line = next(f)
         for num, aline in enumerate(f):
             if random.randrange(num + 2): continue
             line = aline.rstrip()
         hexchat.command("say \002Status RNG: " + "\003" +random.choice(colors) + line)        
     elif word[1] == "add":
-        f = open(slapfile,"a")
+        f = open(rngfile,"a")
         f.write(word_eol[2]+"\n")
         print("Dodano " + word_eol[2] + " do spisu")
         f.close
@@ -69,7 +69,7 @@ def rng(word, word_eol, user_data):
     elif word[1] == "list":
         print("Lista statusów RNG")
         print("")
-        lines = [line.rstrip('\n') for line in open(slapfile)]
+        lines = [line.rstrip('\n') for line in open(rngfile)]
         for element in lines:
             print(element)
     else:
