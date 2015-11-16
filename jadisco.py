@@ -39,8 +39,8 @@ def info(word, word_eol, user_data):
     return hexchat.EAT_ALL 
 
 def death_counter(word, word_eol, user_data):
-    if len(word_eol[1]) < 1:
-        print("Podaj ilosc cmierci")
+    if len(word_eol) < 2:
+        print("Podaj ilosc śmierci")
     else:
         hexchat.command('say \002Death Counter: \00304' + word_eol[1])
     return hexchat.EAT_ALL
