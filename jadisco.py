@@ -87,7 +87,6 @@ def mj(word, word_eol, user_data):
 
 def Rainbow(text,offset):
 	rainbowed = ""
-
 	for i in range(len(text)):
 		rainbowed += "\x03{}{}".format(rainbow[(i+offset)%len(rainbow)], text[i])
 	return rainbowed
