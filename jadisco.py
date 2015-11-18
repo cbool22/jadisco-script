@@ -6,10 +6,12 @@ import urllib2
 import json
 import sys
 import os
+reload(sys);
+sys.setdefaultencoding("utf8")
 
 
 __module_name__ = 'Jadisco'
-__module_version__ = '2.1'
+__module_version__ = '2.5'
 __module_author__ = "cbool222"
 __module_description__ = 'Skrypt do obsługi czatu Jadisco. Napisz /jd by uzyskac informacje o skrypcie.'
 
@@ -87,6 +89,7 @@ def mj(word, word_eol, user_data):
 
 def Rainbow(text,offset):
 	rainbowed = ""
+
 	for i in range(len(text)):
 		rainbowed += "\x03{}{}".format(rainbow[(i+offset)%len(rainbow)], text[i])
 	return rainbowed
