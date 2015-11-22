@@ -28,21 +28,21 @@ YOUTUBE_API_VERSION = "v3"
 rngfile = "C:/Users/cbool/AppData/Roaming/HexChat/addons/rngobjects.txt"
 
 def info(word, word_eol, user_data):
-    print("\002\00304Informacje skryptu Jadisco.")
-    print("")
-    print("\002KOMENDY")
-    print("1. \002\035dc\035\002 - Death Counter, wymaga argumentu czyli ilości śmierci.")
-    print("2. \002\035rng\035\002 - Status RNG Maćka, wpisz /rng info by uzyskać więcej informacji.")
-    print("3. \002\035mj\035\002 - MJUZIK!!!1one, wymaga podania linku do muzyki z YouTube.")
-    print("4. \002\035r\035\002 - Wypisuje tekst w kolorze tęczy")
-    print("5. \002\035tencza\035\002 - TENCZA!!!")
-    print("")
-    print("")
+    hexchat.prnt("\002\00304Informacje skryptu Jadisco.")
+    hexchat.prnt("")
+    hexchat.prnt("\002KOMENDY")
+    hexchat.prnt("1. \002\035dc\035\002 - Death Counter, wymaga argumentu czyli ilości śmierci.")
+    hexchat.prnt("2. \002\035rng\035\002 - Status RNG Maćka, wpisz /rng info by uzyskać więcej informacji.")
+    hexchat.prnt("3. \002\035mj\035\002 - MJUZIK!!!1one, wymaga podania linku do muzyki z YouTube.")
+    hexchat.prnt("4. \002\035r\035\002 - Wypisuje tekst w kolorze tęczy")
+    hexchat.prnt("5. \002\035tencza\035\002 - TENCZA!!!")
+    hexchat.prnt("")
+    hexchat.prnt("")
     return hexchat.EAT_ALL 
 
 def death_counter(word, word_eol, user_data):
     if len(word_eol) < 2:
-        print("Podaj ilosc śmierci")
+        hexchat.prnt("Podaj ilosc śmierci")
     else:
         hexchat.command('say \002Death Counter: \00304' + word_eol[1])
     return hexchat.EAT_ALL
@@ -58,22 +58,22 @@ def rng(word, word_eol, user_data):
     elif word[1] == "add":
         f = open(rngfile,"a")
         f.write(word_eol[2]+"\n")
-        print("Dodano " + word_eol[2] + " do spisu")
+        hexchat.prnt("Dodano " + word_eol[2] + " do spisu")
         f.close
     elif word[1] == "info":
-        print("\002\00304Informacje o funkcji RNG.")
-        print("")
-        print("\002ARGUMENTY")
-        print("1. \002\035brak\035\002 - Wypisuje podany status z losowym kolorem")
-        print("2. \002\035add\035\002 - Dodaje podany status do spisu")
-        print("3. \002\035list\035\002 - Wypisuje wszystkie statusy z spisu")
-        print("")
+        hexchat.prnt("\002\00304Informacje o funkcji RNG.")
+        hexchat.prnt("")
+        hexchat.prnt("\002ARGUMENTY")
+        hexchat.prnt("1. \002\035brak\035\002 - Wypisuje podany status z losowym kolorem")
+        hexchat.prnt("2. \002\035add\035\002 - Dodaje podany status do spisu")
+        hexchat.prnt("3. \002\035list\035\002 - Wypisuje wszystkie statusy z spisu")
+        hexchat.prnt("")
     elif word[1] == "list":
-        print("Lista statusów RNG")
-        print("")
+        hexchat.prnt("Lista statusów RNG")
+        hexchat.prnt("")
         lines = [line.rstrip('\n') for line in open(rngfile)]
         for element in lines:
-            print(element)
+            hexchat.prnt(element)
     else:
         hexchat.command('say \002Status RNG: '+ "\003" +random.choice(colors) + word_eol[1])
     return hexchat.EAT_ALL
