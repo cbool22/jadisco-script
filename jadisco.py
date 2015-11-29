@@ -110,6 +110,17 @@ def tencza(word, word_eol, user_data):
         test += "\003" + element +"█"
     hexchat.command("say " + test)
     return hexchat.EAT_ALL
+    
+def hello(word, word_eol, userdata):
+	hexchat.command("say Hello! Hello! Hello!")
+	return hexchat.EAT_HEXCHAT 
+    
+def ic(word, word_eol, userdata):
+		stont = "http://i.imgur.com/PFYCJNt.jpg"
+		triggernick = word[0]
+		trigger = re.split(' ', word[1].lower())
+		if trigger[0] == '!ic':
+			hexchat.command("say " + trigger[1] + ": " + stont )  
 
 hexchat.hook_command('dc', death_counter)
 hexchat.hook_command('rng', rng)
@@ -117,3 +128,5 @@ hexchat.hook_command('mj', mj)
 hexchat.hook_command('jd', info)
 hexchat.hook_command('r', rainbowcmd)
 hexchat.hook_command('tencza', tencza)
+hexchat.hook_print('You Join', hello)
+hexchat.hook_print('Channel Message', ic)
